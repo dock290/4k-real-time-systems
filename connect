@@ -1,0 +1,2 @@
+#!/bin/bash
+ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 root@localhost -p 3022

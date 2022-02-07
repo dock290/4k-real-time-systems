@@ -1,0 +1,5 @@
+#!/bin/bash
+export CFLAGS=`xeno-config --xeno-cflags`
+export LDFLAGS=`xeno-config --xeno-ldflags`
+gcc $CFLAGS $LDFLAGS -lnative -lrtdk $1.c -o $1
+export LD_LIBRARY_PATH=/usr/xenomai/lib
