@@ -24,7 +24,7 @@ void demo(void *arg) {
 void names(void *arg) {
   RT_TASK *curtask;
   RT_TASK_INFO curtaskinfo;
-  rt_printf("Kirgizov Kuznetcov\n");
+  rt_printf("Kirgizov Kuznetcov Dunaeva\n");
   // запрос текущей задачи
   curtask = rt_task_self();
   rt_task_inquire(curtask, &curtaskinfo);
@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
   sprintf(str, "hello");
   rt_task_create(&demo_task, str, 0, 50, 0);
 
-  sprintf(str, "Kirgizov Kuznetcov task name");
+  sprintf(str, "Kirgizov Kuznetcov Dunaeva task name");
   rt_task_create(&names_task, str, 0, 20, 0);
 
   // Arguments: &task,
