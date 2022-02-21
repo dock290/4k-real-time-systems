@@ -35,8 +35,7 @@ void names(void *arg) {
 int main(int argc, char *argv[]) {
   char str[64];
 
-  // выполняем авто-инициализацию rt_print buffers если задача этого не
-  // сделала...
+  // выполняем авто-инициализацию rt_print buffers если задача этого не сделала...
   rt_print_auto_init(1);
 
   // Запрет использования swap для программы...
