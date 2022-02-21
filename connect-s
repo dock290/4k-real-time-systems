@@ -1,0 +1,2 @@
+#!/bin/bash
+ssh -t -oKexAlgorithms=+diffie-hellman-group1-sha1 root@10.0.231.250 "cd PO-83/Kirgizov; bash --login"
