@@ -1,2 +1,2 @@
 #!/bin/bash
-scp -r -oKexAlgorithms=+diffie-hellman-group1-sha1 $1 root@192.168.1.198:PO-83/Kirgizov/$1
+scp -r -P 3022 -oKexAlgorithms=+diffie-hellman-group1-sha1 $1 root@192.168.1.198:PO-83/Kirgizov/$1
