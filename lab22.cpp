@@ -51,7 +51,6 @@ bool handleInitialMode(int printMode) {
     if (Serial.available() > 0) {
       if (Serial.read() == 'q') {
         noize();
-        printMode = 1;
         return true;
       }
     }

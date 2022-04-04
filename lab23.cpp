@@ -28,33 +28,17 @@ void setup() {
   pinMode(LED_D1, OUTPUT);
   analogWrite(LED_D1, 255);
 
-  xTaskCreate(TaskStandby,
-              "TaskStandby",
-              128,
-              NULL,
-              0,
-              &taskStandby
-             );
+  xTaskCreate(TaskStandby, "TaskStandby",
+              128, NULL, 0, &taskStandby);
              
-    xTaskCreate(TaskSettings,
-                "TaskSettings",
-                128,
-                NULL,
-                0,
-              &taskSettings
-      );
-    vTaskSuspend(taskSettings);
+  xTaskCreate(TaskSettings, "TaskSettings",
+              128, NULL, 0, &taskSettings);
+  vTaskSuspend(taskSettings);
     
-    xTaskCreate(TaskHeat,
-                "TaskHeat",
-                128,
-                NULL,
-                0,
-              &taskHeat
-      );
-    vTaskSuspend(taskHeat);
+  xTaskCreate(TaskHeat, "TaskHeat",
+              128, NULL, 0, &taskHeat);
+  vTaskSuspend(taskHeat);
 }
-
 
 void loop () {
 }
@@ -65,12 +49,6 @@ void makeSomeNoize() {
   digitalWrite(BUZZER_PIN, HIGH);
   delay(500);
 }
-
-bool handleWaitMode(int printMode) {
-  
-  return false;
-}
-
 
 void TaskStandby(void *pvParams) {
   int printMode = 0;
@@ -201,6 +179,7 @@ void TaskSettings(void *pvParams) {
 
 void TaskHeat(void *pvParams) {
   analogWrite(LED_D4, 255);
+  analogWrite(LED_D1, 0);
   
   MFS.Display(getPowerByMode(powerMode));
   delay(500);
@@ -219,6 +198,7 @@ void TaskHeat(void *pvParams) {
       heatStartTime = currentTime;
 
       if (heatTime == 0 && noize == true) {
+        analogWrite(LED_D1, 255);
         noize = false;
         makeSomeNoize();
       }
