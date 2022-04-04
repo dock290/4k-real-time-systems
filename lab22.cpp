@@ -42,9 +42,11 @@ bool handleInitialMode(int printMode) {
   while (true) {
     bool button1Pressed = !digitalRead(BUTTON_1_PIN);
     if (button1Pressed && !buttonHold) {
-      return true;
       buttonHold = true;
     } else if (!button1Pressed) {
+      if (buttonHold) {
+        return true;
+      }
       buttonHold = false;
     }
 
@@ -129,13 +131,15 @@ void TaskPrintManual(void *pvParams) {
   while (true) {
     bool button1Pressed = !digitalRead(BUTTON_1_PIN);
     if (button1Pressed && !buttonHold) {
-      printMode++;
-      if (printMode > 2) {
-        printMode = 0;
-      }
-      printNumber(printMode);
       buttonHold = true;
     } else if (!button1Pressed) {
+      if (buttonHold) {
+        printMode++;
+        if (printMode > 2) {
+          printMode = 0;
+        }
+        printNumber(printMode);
+      }
       buttonHold = false;
     }
 
